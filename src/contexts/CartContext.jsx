@@ -6,6 +6,13 @@ export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const removeFromCart = (id) => {
+    const newCart = [...cart].filter((item) => {
+      return item.id !== id; 
+    });
+    setCart(newCart);
+  };
+
   const addToCart = (product,id) => {
     const newItem = { ...product, amount: 1};
     const cartItem = cart.find((item) => {
@@ -30,9 +37,12 @@ const CartProvider = ({ children }) => {
     
     
   };
-  console.log(cart);
+ 
+  const clearCart = () => {
+    setCart([]);
+  };
   return (
-    <CartContext.Provider value={{cart,addToCart}}>{children}
+    <CartContext.Provider value={{cart,addToCart, removeFromCart, clearCart}}>{children}
       
       </CartContext.Provider>
   );
