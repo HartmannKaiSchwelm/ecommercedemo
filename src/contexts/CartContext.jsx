@@ -6,6 +6,13 @@ export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  // item amount state
+  const [itemAmount, setItemAmount] = useState(0);
+
+  useEffect(() => {
+    const totalAmount = cart.reduce((total, item) => total + item.amount, 0)
+    setItemAmount(totalAmount)
+  }, [cart])
   const removeFromCart = (id) => {
     const newCart = [...cart].filter((item) => {
       return item.id !== id; 
@@ -51,6 +58,7 @@ const CartProvider = ({ children }) => {
   const decreaseAmount = (id) => {
     const cartItem = cart.find((item) => item.id === id);
     if (cartItem) {
+      //if amount is 1, remove item from cart
       if (cartItem.amount === 1) {
         removeFromCart(id);
       } else {
@@ -67,7 +75,7 @@ const CartProvider = ({ children }) => {
     }
   };
   return (
-    <CartContext.Provider value={{cart,addToCart, removeFromCart, clearCart, increaseAmount, decreaseAmount}}>{children}
+    <CartContext.Provider value={{cart,addToCart, removeFromCart, clearCart, increaseAmount, decreaseAmount, itemAmount}}>{children}
       
       </CartContext.Provider>
   );
