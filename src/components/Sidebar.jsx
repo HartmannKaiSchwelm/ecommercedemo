@@ -6,6 +6,7 @@ import { CartContext } from '../contexts/CartContext';
 import { FaTrashCan } from 'react-icons/fa6';
 import {FiTrash2} from 'react-icons/fi';
 import CartItem from './CartItem';
+import { Link } from 'react-router-dom';
 const Sidebar = () => {
   const { isOpen, handleClose } = useContext(SidebarContext)
   const { cart, clearCart, totalPrize } = useContext(CartContext);
@@ -34,7 +35,7 @@ const Sidebar = () => {
             </div> 
           <div onClick={clearCart} className="cursor-pointer py-4 bg-red-500 text-white w-12 h-12 flex justify-center items-center text-xl"><FiTrash2 /></div>
           </div>
-         
+         <Link to={"/"} className="bg-custom-quat flex p-4 justify-center items-center w-full text-black font-medium">Checkout</Link>
           </div>
     </div>
   )

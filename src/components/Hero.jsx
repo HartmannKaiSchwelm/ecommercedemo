@@ -13,7 +13,7 @@ const Hero = () => {
             <br />
             <span className="font-semibold">WOMENS</span>
           </h1>
-          <Link to={"/"} className="self-start border-b">Discover more</Link>
+          <Link to={"/"} className="self-start border-b-2 border-t-2 border-black uppercase font-semibold">Discover more</Link>
         </div>
       <div className="hidden lg:flex">
         <img src={HeroPic} alt="models" />
