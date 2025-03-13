@@ -3,22 +3,26 @@ import HeroPic from "../assets/kiModels.png"
 import { Link } from 'react-router-dom'
 const Hero = () => {
   return (
-    <section className=" h-[800px] bg-hero bg-no-repeat bg-cover py-24">
-      <div className="container mx-auto flex justify-around h-full">
-        <div className="flex flex-col justify-center">
-          <div className="font-semibold flex items-center uppercase">
-            <div className="w-15 h-[2px] bg-black mx-3"></div>New Trend<div className="w-15 h-[2px] bg-black mx-3"></div>
-          </div>
-          <h1 className="text-[70px] leading-[1.1] font-light mb-4">AUTUMN SALE STYLISH 
-            <br />
-            <span className="font-semibold">WOMENS</span>
-          </h1>
-          <Link to={"/"} className="self-start border-b-2 border-t-2 border-black uppercase font-semibold">Discover more</Link>
+    <section className="font-montserrat h-[800px] bg-custom-prim bg-no-repeat bg-cover py-24">
+    <div className="container mx-auto flex justify-around h-full text-custom-quat">
+      <div className="flex flex-col justify-center bg-custom-prim h-[200px] mt-100">
+        <div className="font-semibold flex items-center uppercase">
+          <div className="w-20 h-[1px] bg-black mx-3"></div>
+          This season´s must-have
+          <div className="w-20 h-[1px] bg-black mx-3"></div>
         </div>
-      <div className="hidden lg:flex">
+        <h1 className="text-[70px] leading-[1.1] font-semibold mb-4">
+          SPRING FASHION
+          <br />
+          <span className="font-light">TIMELESS & TRENDY</span>
+        </h1>
+      </div>
+      <div className="hidden lg:flex relative h-[704px]"
+      >
         <img src={HeroPic} alt="models" />
       </div>
-        </div></section>
+    </div>
+  </section>
   )
 }
 

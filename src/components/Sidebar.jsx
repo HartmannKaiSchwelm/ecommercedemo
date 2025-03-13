@@ -13,12 +13,12 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`w-full bg-white fixed top-14 right-0 h-full shadow-2xl md:w-[35vw] xl:max-w-[30vw] transition-transform duration-300 z-20 px-4 lg:px-[35px] ${
+      className={`w-full font-cormorant bg-white fixed top-14 right-0 h-full shadow-2xl md:w-[35vw] xl:max-w-[30vw] transition-transform duration-300 z-20 px-4 lg:px-[35px] ${
         isOpen ? 'translate-x-0' : 'translate-x-full'
       }`}
     >
       <div className="flex justify-between items-center py-6 border-b">
-        <div className="uppercase text-sm font-semibold">Shopping Bag ({itemAmount})</div>
+        <div className="uppercase text-sm font-semibold">Cart ({itemAmount})</div>
         <button className="cursor-pointer" onClick={handleClose}>
           <IoCloseCircle className="text-3xl text-custom-quart" />
         </button>
@@ -28,14 +28,16 @@ const Sidebar = () => {
           <CartItem key={item.id} item={item} />
         ))}
       </div>
-      <div className="bg-pink-200 flex flex-col gap-y-3 py-4 mt-4">
+      <div className="bg-custom-prim flex flex-col gap-y-3 py-3 mt-3">
         <div className="flex w-full justify-between items-center">
           <div className="uppercase text-semibold"> 
             <span className="mr-2">Total:</span>€ {parseFloat(totalPrize).toFixed(2)}
             </div> 
-          <div onClick={clearCart} className="cursor-pointer py-4 bg-red-500 text-white w-12 h-12 flex justify-center items-center text-xl"><FiTrash2 /></div>
+          <div onClick={clearCart} className="cursor-pointer py-4 bg-transparent text-custom-quat w-12 h-12 flex justify-center items-center text-xl">
+            <FiTrash2 />
+            </div>
           </div>
-         <Link to={"/"} className="bg-custom-quat flex p-4 justify-center items-center w-full text-black font-medium">Checkout</Link>
+         <Link to={"/checkout"} className="buttons">Checkout</Link>
           </div>
     </div>
   )

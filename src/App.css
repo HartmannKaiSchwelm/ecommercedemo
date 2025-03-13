@@ -1,8 +1,21 @@
+@import url("https://fonts.googleapis.com/css2\family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap");
+
 @import "tailwindcss";
 
 @theme{
-  --color-custom-prim: #F8FAFC;
-  --color-custom-sec: #D9EAFD;
-  --color-custom-tert: #BCCCDC;
-  --color-custom-quat: #9AA6B2;
+  --color-custom-prim: #dcd7c9;
+  --color-custom-sec: #a27b5c;
+  --color-custom-tert: #3f4f44;
+  --color-custom-quat: #2c3930;
+
+  --font-cormorant: "Cormorant Garamond", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-playfair: "Playfair Display", serif;
+  --font-quicksand: "Quicksand", sans-serif;
+
+}
+
+@utility buttons {
+  @apply w-full bg-custom-sec hover:bg-custom-tert hover:text-custom-prim  py-2 rounded mb-4 text-center block
 }

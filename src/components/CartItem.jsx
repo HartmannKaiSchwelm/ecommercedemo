@@ -21,12 +21,12 @@ const CartItem = ({item})=>{
             {title}
           </Link>
           <div onClick={() => removeFromCart(id)} className="text-xl cursor-pointer">
-            <IoMdClose className="text-gray-500 hover:text-red-500 transition"/>
+            <IoMdClose className="text-gray-500 hover:text-custom-quat transition"/>
           </div>
           
         </div>
         <div className=" flex gap-x-2 h-[36px] text-sm ">
-          <div className="flex flex-1 max-w-[100px] items-center h-full border text-black font-medium">
+          <div className="flex flex-1 max-w-[100px] items-center h-full hover:border-b-2 hover:border-t-2  text-black font-medium">
             <div onClick={() => decreaseAmount(id)} className="flex-1 h-full flex justify-center items-center cursor-pointer">
               <IoMdRemove />
             </div>
