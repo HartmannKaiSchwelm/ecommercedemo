@@ -1,12 +1,17 @@
-import React,{ useContext}   from 'react'
+import React,{ useContext, useEffect}   from 'react'
 import {ProductContext} from '../contexts/ProductContext'
+import {SidebarContext} from '../contexts/SidebarContext'
 import ProductCard from '../components/ProductCard'
 import Hero from "../components/Hero"
 const Home = () => {
+  const {  handleClose } = useContext(SidebarContext)
   // get products from context
   const {products} = useContext(ProductContext);
   console.log(products);
-
+ useEffect(() => {
+     handleClose()
+   }, [])
+ 
   // filter only for clothing products
   const clothingProducts = products.filter((item) => {
     return (

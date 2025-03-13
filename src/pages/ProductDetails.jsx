@@ -1,8 +1,9 @@
 import React from 'react'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import {CartContext} from '../contexts/CartContext'	
 import {ProductContext} from '../contexts/ProductContext' 
+import {SidebarContext} from '../contexts/SidebarContext'
 const ProductDetails = () => {
   const { id } = useParams();
   const {products} =useContext(ProductContext)
@@ -11,6 +12,10 @@ const ProductDetails = () => {
   const product = products.find(item =>{
     return item.id === parseInt(id) ; 
   });
+  const {  handleClose } = useContext(SidebarContext)
+  useEffect(() => {
+       handleClose()
+     }, [])
   //deconstruct product
   const { title, price, description, image} = product; 
   return (
@@ -27,7 +32,7 @@ const ProductDetails = () => {
             <div className="text-xl text-custom-quat font-medium mb-6">€ {price}</div>
            
             <p className="mb-8">{description}</p>
-            <button onClick={() => addToCart(product, product.id)} className="bg-custom-tert py-4 px-8 text-white hover:bg-custom-sec">Add to cart</button>
+            <button onClick={() => addToCart(product, product.id)} className="buttons">Add to cart</button>
         </div> </div>
        
       </div>

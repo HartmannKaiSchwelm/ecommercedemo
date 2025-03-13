@@ -8,7 +8,7 @@ import Logo from "../assets/logo.png"
 const Header = () => {
   // header state for scrolling bhv
   const [ isActive, setIsActive] = useState(false)
-  const { setIsOpen, isOpen} = useContext(SidebarContext)
+  const { setIsOpen, isOpen } = useContext(SidebarContext)
   const { itemAmount } = useContext(CartContext)
 
   //event listener for scrolling
