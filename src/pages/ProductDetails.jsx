@@ -1,28 +1,37 @@
 import React, { useContext, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { CartContext, ProductContext, SidebarContext } from '../contexts'
+import { CartContext } from '../contexts/CartContext'
+import { ProductContext } from '../contexts/ProductContext'
+import { SidebarContext } from '../contexts/SidebarContext'
 
 const ProductDetails = () => {
   const { id } = useParams()
   const navigate = useNavigate()
-  const { products } = useContext(ProductContext)
+  const { products, isLoadíng } = useContext(ProductContext)
   const { addToCart } = useContext(CartContext)
   const { handleClose } = useContext(SidebarContext)
-
+  const [isChecking, setIsChecking] = useState(true)
   // Produkt suchen mit Error-Handling
-  const product = products.find(item => item.id === parseInt(id))
-
-  // Wichtige Verbesserungen:
   useEffect(() => {
     handleClose()
     
-    // Redirect bei ungültiger Produkt-ID
-    if (!product) {
-      navigate('/not-found', { replace: true })
-      return
+    if (!isLoading) {
+      const productExists = products.some(item => item.id === Number(id))
+      if (!productExists) {
+        navigate('/not-found', { replace: true })
+      }
+      setIsChecking(false)
     }
-  }, [product, handleClose, navigate])
+  }, [isLoading, products, id, handleClose, navigate])
 
+  if (isChecking || isLoading) {
+    return (
+      <section className="pt-32 pb-12 lg:py-32 h-screen flex items-center justify-center font-cormorant">
+        <div className="text-2xl animate-pulse">Produkt wird geladen...</div>
+      </section>
+    )
+  }
+  const product = products.find(item => item.id === Number(id))
   // Fallback für fehlendes Produkt
   if (!product) {
     return (
