@@ -13,6 +13,17 @@ const ProductDetails = () => {
   const product = products.find(item =>{
     return item.id === parseInt(id) ; 
   });
+
+  // Null-Check: Wenn das Produkt nicht gefunden wird
+  if (!product) {
+    return (
+      <section className="pt-32 pb-12 lg:py-32 h-screen flex items-center justify-center font-cormorant">
+        <div className="text-2xl">Produkt nicht gefunden.</div>
+      </section>
+    );
+  }
+
+
   const {  handleClose } = useContext(SidebarContext)
   useEffect(() => {
        handleClose()
