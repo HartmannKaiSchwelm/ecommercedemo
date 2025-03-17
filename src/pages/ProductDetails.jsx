@@ -8,7 +8,10 @@ const ProductDetails = () => {
   const { id } = useParams();
   const {products} = useContext(ProductContext)
   const {addToCart} = useContext(CartContext);
- 
+ const {  handleClose } = useContext(SidebarContext)
+  useEffect(() => {
+       handleClose()
+     }, [])
 
   const product = products.find(item =>{
     return item.id === parseInt(id) ; 
@@ -24,10 +27,7 @@ const ProductDetails = () => {
   }
 
 
-  const {  handleClose } = useContext(SidebarContext)
-  useEffect(() => {
-       handleClose()
-     }, [])
+  
   //deconstruct product
   const { title, price, description, image} = product; 
   return (
