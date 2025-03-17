@@ -6,30 +6,7 @@
     <link rel="icon" type="image/svg+xml" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fake Demo Store</title>
-    <script>
-      // This helps with the refresh issue
-      (function() {
-        const path = window.location.pathname;
-        if (path !== '/' && !path.includes('.')) {
-          localStorage.setItem('redirect_path', path);
-          if (window.location.search) {
-            localStorage.setItem('redirect_search', window.location.search);
-          }
-          window.location.href = '/';
-        }
-        
-        // Check for redirect from refresh
-        window.addEventListener('DOMContentLoaded', () => {
-          const redirectPath = localStorage.getItem('redirect_path');
-          const redirectSearch = localStorage.getItem('redirect_search') || '';
-          if (redirectPath && window.location.pathname === '/') {
-            localStorage.removeItem('redirect_path');
-            localStorage.removeItem('redirect_search');
-            window.history.replaceState(null, null, redirectPath + redirectSearch);
-          }
-        });
-      })();
-    </script>
+    
   </head>
   <body>
     <div id="root"></div>
