@@ -1,13 +1,23 @@
 import React from 'react'
 import { useContext, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import {CartContext} from '../contexts/CartContext'	
 import {ProductContext} from '../contexts/ProductContext' 
 import {SidebarContext} from '../contexts/SidebarContext'
 const ProductDetails = () => {
   const { id } = useParams();
-  const {products} =useContext(ProductContext)
+  const {products} = useContext(ProductContext)
   const {addToCart} = useContext(CartContext);
+  const navigate = useNavigate();
+  // f5 problem possible fix
+  useEffect(() => {
+    // Check if the page was reloaded by looking at performance navigation type
+    const navEntry = performance.getEntriesByType('navigation')[0];
+    if (navEntry && navEntry.type === 'reload') {
+      // Refresh the route by navigating to the same URL
+      navigate(0);
+    }
+  }, []);
 
   const product = products.find(item =>{
     return item.id === parseInt(id) ; 
