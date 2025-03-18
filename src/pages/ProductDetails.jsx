@@ -4,14 +4,16 @@ import { useParams } from 'react-router-dom'
 import {CartContext} from '../contexts/CartContext'	
 import {ProductContext} from '../contexts/ProductContext' 
 import {SidebarContext} from '../contexts/SidebarContext'
+
+
 const ProductDetails = () => {
   const { id } = useParams();
   const {products} = useContext(ProductContext)
   const {addToCart} = useContext(CartContext);
- const {  handleClose } = useContext(SidebarContext)
+  const {   handleClose } = useContext(SidebarContext)
   useEffect(() => {
-       handleClose()
-     }, [])
+    handleClose();
+  }, []);
 
   const product = products.find(item =>{
     return item.id === parseInt(id) ; 
