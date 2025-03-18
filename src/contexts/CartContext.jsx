@@ -114,7 +114,7 @@ const CartProvider = ({ children }) => {
     <CartContext.Provider value={{cart,addToCart, removeFromCart, clearCart, increaseAmount, decreaseAmount, itemAmount, totalPrize}}>
       {children}
       {notification && (
-        <div className="fixed bottom-5 right-5 bg-custom-prim text-custom-sec px-6 py-3 rounded-lg shadow-lg animate-fade-in-out">
+        <div className="fixed bottom-5 right-5 bg-custom-prim text-custom-quant px-6 py-3 rounded-lg shadow-lg animate-fade-in-out">
           {notification}
         </div>
       )}
