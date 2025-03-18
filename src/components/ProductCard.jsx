@@ -12,10 +12,12 @@ const ProductCard = ({product}) => {
       <div className="border border-custom-tert h-[300px] mb-4 relative overflow-hidden group transition ">
         <div className="w-full h-full flex justify-center items-center">
           <div className="w-[200px] mx-auto flex justify-center items-center">
+          <Link to={`/product/${id}`} className="  bg-custom-sec ">
             <img className="max-h-[160px] group-hover:scale-125 transition duration-300"src={image}></img>
+            </Link>
           </div>
           <div className="absolute -bottom-14 right-0 group-hover:bottom-0 bg-custom-sec/40 gap-y-2 opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-custom-prim flex transition-all duration-300">
-            <button onClick={() => addToCart(product, id)}>
+            <button onClick={() => addToCart(product, id)} className="active:outline-1 animate-fade-in-out">
               <div className="flex justify-center items-center text-custom-quart w-12 h-12">
                 <BsPlus className="text-3xl"/>
               </div>

@@ -1,4 +1,4 @@
-import React, {createContext, useState, useEffect} from 'react'
+import React, {createContext, useState, useEffect, useCallback} from 'react'
 import PropTypes from 'prop-types';
 
 
@@ -10,6 +10,14 @@ const CartProvider = ({ children }) => {
   const [itemAmount, setItemAmount] = useState(0);
   // total price state
   const [totalPrize, setTotalPrize] = useState(0);
+
+  const [notification, setNotification] = useState(null);
+
+  // Neue Funktion zur Anzeige der Notification
+  const showNotification = useCallback((message) => {
+    setNotification(message)
+    setTimeout(() => setNotification(null), 1500)
+  }, [])
 
   useEffect(() => {
     const totalPrize = cart.reduce((accumulator, currentItem) => {
@@ -57,7 +65,7 @@ const CartProvider = ({ children }) => {
   else{
     setCart([...cart, newItem]);
   }
-    
+    showNotification(`${product.title} added to cart!`)
     
   };
  
@@ -91,9 +99,14 @@ const CartProvider = ({ children }) => {
     }
   };
   return (
-    <CartContext.Provider value={{cart,addToCart, removeFromCart, clearCart, increaseAmount, decreaseAmount, itemAmount, totalPrize}}>{children}
-      
-      </CartContext.Provider>
+    <CartContext.Provider value={{cart,addToCart, removeFromCart, clearCart, increaseAmount, decreaseAmount, itemAmount, totalPrize}}>
+      {children}
+      {notification && (
+        <div className="fixed bottom-5 right-5 bg-custom-prim text-custom-sec px-6 py-3 rounded-lg shadow-lg animate-fade-in-out">
+          {notification}
+        </div>
+      )}
+    </CartContext.Provider>
   );
   
 };

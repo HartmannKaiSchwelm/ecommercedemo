@@ -18,8 +18,8 @@ const Header = () => {
     })
   });
   return (
-    <header className={`${isActive? 'bg-custom-prim py-2 shadow-md' : 'bg-none py-2 '} fixed w-full z-10 transition-all`}>
-      <div className="container mx-auto items-center justify-between h-full flex font-quicksand px-4">
+    <header className={`${isActive? 'bg-custom-prim py-2 shadow-md' : 'bg-none py-2 '} fixed w-full  z-10 transition-all`}>
+      <div className="container lg:mx-auto items-center justify-between h-full flex font-quicksand px-4 ">
       <Link to={'/'}>
       <div>
         <img src={Logo} alt="logo" className="w-[50px] h-[50px]"/>

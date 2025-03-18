@@ -23,7 +23,7 @@ const Sidebar = () => {
           <IoCloseCircle className="text-3xl text-custom-quart" />
         </button>
       </div>
-      <div className=" flex flex-col gap-y-2 h-[520px] lg:h-[640px] overflow-y-auto overflow-x-hidden border-b" >
+      <div className=" flex flex-col gap-y-2 h-[calc(100vh-18rem)] overflow-y-auto overflow-x-hidden border-b" >
         {cart.map((item) => (
           <CartItem key={item.id} item={item} />
         ))}
