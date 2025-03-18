@@ -5,7 +5,14 @@ import PropTypes from 'prop-types';
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(()  => {
+    try {
+      const savedCart = localStorage.getItem('cart')
+      return savedCart ? JSON.parse(savedCart) : []
+    } catch {
+      return []
+    }
+  });
   // item amount state
   const [itemAmount, setItemAmount] = useState(0);
   // total price state
@@ -18,6 +25,11 @@ const CartProvider = ({ children }) => {
     setNotification(message)
     setTimeout(() => setNotification(null), 1500)
   }, [])
+
+   // Speichere cart BEI JEDER ÄNDERUNG
+   useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }, [cart])
 
   useEffect(() => {
     const totalPrize = cart.reduce((accumulator, currentItem) => {
@@ -43,7 +55,7 @@ const CartProvider = ({ children }) => {
       }, 0);
       setItemAmount(amount)
     }
-  })
+  },[cart])
   const addToCart = (product,id) => {
     const newItem = { ...product, amount: 1};
     const cartItem = cart.find((item) => {
