@@ -15,7 +15,7 @@ const Sidebar = () => {
     <div
       className={`w-full font-cormorant bg-white fixed top-14 right-0 h-full shadow-2xl md:w-[35vw] xl:max-w-[30vw] transition-transform duration-300 z-20 px-4 lg:px-[35px] ${
         isOpen ? 'translate-x-0' : 'translate-x-full'
-      }`}
+      } w-full md:w-96 overflow-y-auto`}
     >
       <div className="flex justify-between items-center py-6 border-b">
         <div className="uppercase text-sm font-semibold">Cart ({itemAmount})</div>

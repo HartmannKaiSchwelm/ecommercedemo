@@ -28,4 +28,16 @@
 @utility buttons {
   @apply w-full bg-custom-sec hover:bg-custom-tert hover:text-custom-prim  py-2 rounded mb-4 text-center block;
 }
-  
+
+/* Globale Stile, um Scrollen zu verhindern */
+body.overflow-hidden {
+  overflow: hidden;
+  padding-right: 15px; /* Optional: Kompensation für die Scrollbar */
+}
+
+/* Optional: Überprüfen, ob der Browser Scrollbars unterstützt */
+@supports (scrollbar-width: thin) or (display: -ms-grid) {
+  body.overflow-hidden {
+    padding-right: 0; /* Keine Kompensation erforderlich */
+  }
+}
