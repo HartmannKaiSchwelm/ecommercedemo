@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import ProductDetails from './pages/ProductDetails'
 import Checkout from "./pages/Checkout"
 import ThankYou from "./pages/ThankYou"
+import Impressum from "./pages/Impressum"
 //components
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -22,6 +23,7 @@ function App() {
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/checkout/" element={<Checkout />} />
         <Route path="/thankyou/" element={<ThankYou />} />
+        <Route path="/impressum/" element={<Impressum />} />
       </Routes>
       <Sidebar />
       <Footer />
