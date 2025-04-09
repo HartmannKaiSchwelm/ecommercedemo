@@ -5,6 +5,8 @@ import ProductDetails from './pages/ProductDetails'
 import Checkout from "./pages/Checkout"
 import ThankYou from "./pages/ThankYou"
 import Impressum from "./pages/Impressum"
+import LegalNotice from "./pages/LegalNotice"
+import PrivacyPolicy from "./pages/PrivacyPolicy"
 //components
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -24,6 +26,8 @@ function App() {
         <Route path="/checkout/" element={<Checkout />} />
         <Route path="/thankyou/" element={<ThankYou />} />
         <Route path="/impressum/" element={<Impressum />} />
+        <Route path="/legal-notice/" element={<LegalNotice />} />
+        <Route path="/privacy-policy/" element={<PrivacyPolicy />} />
       </Routes>
       <Sidebar />
       <Footer />
